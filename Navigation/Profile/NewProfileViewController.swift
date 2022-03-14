@@ -14,19 +14,16 @@ class NewProfileViewController: UIViewController {
         return profile
     }()
     
+      private let newProfile: NewProfileHeaderView = {
+        let newProfile = NewProfileHeaderView()
+       return newProfile
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGray4
         title = "Profile"
     }
-    
-    override func viewWillLayoutSubviews() {
-        profile.frame = self.view.frame
-        view.addSubview(profile)
-        profile.addConstraints(view: view)
-    }
-
-    
     
 }

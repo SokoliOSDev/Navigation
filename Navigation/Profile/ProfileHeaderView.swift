@@ -128,6 +128,6 @@ class ProfileHeaderView : UIView {
             statusTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             statusTextField.heightAnchor.constraint(equalToConstant: 40)
         ])
-    }
+    }}
     
-}
+   
