@@ -16,19 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let tabBarController = UITabBarController()
         
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = tabBarController
-        window?.makeKeyAndVisible()
+       window = UIWindow(frame: UIScreen.main.bounds)
+       window?.rootViewController = tabBarController
+       window?.makeKeyAndVisible()
         
-        let feedVC = FeedViewController()
-        let feedNavigationController = UINavigationController(rootViewController: feedVC)
-        feedVC.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "star"), tag: 0)
         
         let profileVC = NewProfileHeaderView()
         let profileNavigationViewController = UINavigationController(rootViewController: profileVC)
-        profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 1)
+        profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 0)
         
-        tabBarController.viewControllers = [feedNavigationController, profileNavigationViewController]
+        tabBarController.tabBar.isHidden = true
+        tabBarController.viewControllers = [profileNavigationViewController]
         
         return true
     }
