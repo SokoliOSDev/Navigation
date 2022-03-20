@@ -45,11 +45,6 @@ private let statusLabel : UILabel = {
     label.text = "Waiting for something..."
     return label
 }()
-    private let statusTextField : UITextField = {
-let textField = UITextField()
-        
-        return textField
-}()
     
     private let setStatusButton : UIButton = {
         let button = UIButton(frame: CGRect(x: 100, y: 100, width: 250, height: 75))
@@ -63,8 +58,40 @@ let textField = UITextField()
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
         button.layer.cornerRadius = 14
+        button.addTarget(NewProfileViewController.self, action: #selector(pressStatusButton), for: .touchUpInside)
         return button
     }()
+    
+    private let statusTextField: UITextField = {
+            let textField = UITextField()
+            textField.translatesAutoresizingMaskIntoConstraints = false
+            textField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+            textField.tintColor = .black
+            textField.layer.borderWidth = 1
+            textField.layer.borderColor = UIColor.black.cgColor
+            textField.layer.cornerRadius = 12
+            textField.backgroundColor = .white
+            textField.textAlignment = .center
+            textField.placeholder = "Change status"
+            
+        textField.addTarget(NewProfileViewController.self, action: #selector(statusTextChanged), for: .editingChanged)
+            
+            return textField
+        }()
+    private var statusText: String = ""
+    
+    @objc func pressStatusButton() {
+            statusLabel.text = statusTextField.text
+            print(statusLabel.text ?? "Non")
+            print(statusText)
+        
+        }
+    
+    @objc func statusTextChanged(_ textField: UITextField) {
+            if let text = textField.text{
+                statusText = text
+            }
+        }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,4 +114,9 @@ let textField = UITextField()
         setStatusButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
         setStatusButton.heightAnchor.constraint(equalToConstant: 50),
         statusLabel.topAnchor.constraint(equalTo: setStatusButton.topAnchor, constant: -34),
-        statusLabel.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 160)     ])  }}
+        statusLabel.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 160),
+        statusTextField.bottomAnchor.constraint(equalTo: setStatusButton.topAnchor, constant: -50),
+        statusTextField.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 35),
+        statusTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+        statusTextField.heightAnchor.constraint(equalToConstant: 40)
+        ])  }}
