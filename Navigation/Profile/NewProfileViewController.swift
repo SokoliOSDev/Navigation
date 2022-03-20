@@ -8,11 +8,6 @@
 import UIKit
 
 class NewProfileViewController: UIViewController {
-
-    private let profile: ProfileHeaderView = {
-        let profile = ProfileHeaderView()
-        return profile
-    }()
     
       private let newProfile: NewProfileHeaderView = {
         let newProfile = NewProfileHeaderView()
