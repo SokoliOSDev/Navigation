@@ -4,7 +4,6 @@
 //
 //  Created by Сокол Даниил on 11.03.2022.
 //
-
 import UIKit
 
 class InfoViewController: UIViewController {
@@ -16,23 +15,23 @@ class InfoViewController: UIViewController {
         button.layer.cornerRadius = 18
         return button
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemOrange
         view.addSubview(alertButton)
         alertButton.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         alertButton.center = view.center
     }
-    
+
     @objc func showAlert() {
         infoAlert()
     }
-    
+
     func infoAlert(){
         let alert = UIAlertController(title: "Что-то важное", message: "Тут должно быть что-то важное, но мы забыли это написать!((", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ну ладно", style: .cancel, handler: { action in
